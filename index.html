@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Abishake A – Resume</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      position: relative;
+    }
+
+    section {
+      scroll-snap-align: start;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      overflow: hidden;
+    }
+
+    .section-content {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      padding: 0 20px;
+      flex-wrap: wrap;
+    }
+
+    .text-block,
+    .image-block {
+      flex: 1 1 300px;
+      min-width: 280px;
+    }
+
+    .image-block img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #005792;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #005792;
+      font-weight: bold;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #ccc;
+      display: inline-block;
+      width: 100%;
+    }
+
+    p, li, span {
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .skills span {
+      display: inline-block;
+      margin: 6px;
+      padding: 6px 12px;
+      background: #e3f2fd;
+      color: #1976d2;
+      border-radius: 20px;
+      font-size: 14px;
+      animation: popIn 0.6s ease forwards;
+    }
+
+    .signature {
+      text-align: right;
+      margin-top: 30px;
+      color: #000000;
+    }
+
+    .signature img {
+      width: 150px;
+      transform: rotate(20deg);
+      margin-bottom: -60px;
+      margin-right: -30px;
+    }
+
+    .bg1 { background-color: #f5f7fa; }
+    .bg2 { background-color: #e8f0fe; }
+    .bg3 { background-color: #fff7e6; }
+    .bg4 { background-color: #f0f4c3; }
+    .bg5 { background-color: #e1f5fe; }
+    .bg6 { background-color: #f3e5f5; }
+    .bg7 { background-color: #eae7f6; }
+    .bg8 { background-color: #fbe9e7; }
+    .bg9 { background-color: #e0f2f1; }
+
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .scroll-animate {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .scroll-animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hamburger {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+      width: 30px;
+      height: 22px;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      height: 4px;
+      background: #005792;
+      margin: 4px 0;
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+
+    .nav-overlay {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 300px;
+      height: 100vh;
+      background: #ffffff;
+      box-shadow: -4px 0 12px rgba(0,0,0,0.1);
+      z-index: 998;
+      padding: 40px 20px;
+      transition: right 0.4s ease;
+    }
+
+    .nav-overlay.open {
+      right: 0;
+    }
+
+    .nav-overlay h3 {
+      margin-bottom: 20px;
+      color: #005792;
+    }
+
+    .nav-overlay ul {
+      list-style: none;
+    }
+
+    .nav-overlay li {
+      margin-bottom: 16px;
+    }
+
+    .nav-overlay a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .profile-fixed {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 12px;
+      text-align: right;
+      color: #005792;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<div class="hamburger" onclick="toggleMenu()">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+<div class="nav-overlay" id="navMenu">
+  <ul>
+    <li><a href="#name">Profile</a></li>
+    <li><a href="#career">Career Objective</a></li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#interest">Interests</a></li>
+    <li><a href="#personal">Personal</a></li>
+    <li><a href="#declaration">Declaration</a></li>
+  </ul>
+</div>
+
+<!-- Sections -->
+<section class="bg1" id="name">
+  <div class="section-content">
+    <div class="text-block scroll-animate">
+      <h1>Abishake A</h1>
+      <p>Email: abishekbence77@gmail.com<br>
+         Phone: +91 7598969059<br>
+         Address: 12/144A/7, Kakkavilai, Tamil Nadu – 629159</p>
+    </div>
+    <div class="image-block scroll-animate">
+      <img src="my photo.jpeg" alt="Photo">
+    </div>
+  </div>
+</section>
+
+<section class="bg2" id="career">
+  <div class="section-content">
+    <div class="image-block scroll-animate">
+      <img src="career obect2.jpeg" alt="Career">
+    </div>
+    <div class="text-block scroll-animate">
+      <h2>Career Objective</h2>
+      <p>Seeking a challenging and progressive career using my technical, design, and analytical skills to contribute to organizational growth and personal advancement.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bg3" id="summary">
+  <div class="section-content">
+    <div class="text-block scroll-animate">
+      <h2>Professional Summary</h2>
+      <p>Dedicated Technical Assistant and Graphic Designer with 2.5+ years in government departments and 3 years in graphic design. Proficient in Java, Power BI, Tableau, and Advanced Excel. Known for adaptability and quality delivery.</p>
+    </div>
+    <div class="image-block scroll-animate">
+      <img src="Professional Summary.jpeg" alt="Summary">
+    </div>
+  </div>
+</section>
+
+<section class="bg4" id="experience">
+  <div class="section-content">
+    <div class="image-block scroll-animate">
+      <img src="work experience.jpeg" alt="Work Experience">
+    </div>
+    <div class="text-block scroll-animate">
+      <h2>Work Experience</h2>
+      <ul>
+        <li><strong>Technical Assistant – TAHDCO</strong> (Jan 2023 – Present)</li>
+        <li><strong>Technical Assistant – HR&CE</strong> (2022 – 2023)</li>
+        <li><strong>Photoshop Designer – Altra Graphix</strong> (2019–2022)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="bg5" id="skills">
+  <div class="section-content">
+    <div class="text-block scroll-animate">
+      <h2>Skills</h2>
+      <div class="skills" id="skills-container"></div>
+    </div>
+    <div class="image-block scroll-animate">
+      <img src="skills1.jpg" alt="Skills">
+    </div>
+  </div>
+</section>
+
+<section class="bg6" id="education">
+  <div class="section-content">
+    <div class="image-block scroll-animate">
+      <img src="Qualification.png" alt="Education">
+    </div>
+    <div class="text-block scroll-animate">
+      <h2>Education</h2>
+      <ul>
+        <li><strong>B.Com</strong> – St. Alphonsa College – 65% (2021)</li>
+        <li><strong>H.S.C</strong> – Providence Hr. Sec – 55% (2018)</li>
+        <li><strong>S.S.L.C</strong> – Providence Hr. Sec – 79% (2016)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="bg7" id="interest">
+  <div class="section-content">
+    <div class="text-block scroll-animate">
+      <h2>Areas of Interest</h2>
+      <p>Designing, Data Analytics, Dashboard Creation, Traveling</p>
+    </div>
+    <div class="image-block scroll-animate">
+      <img src="intrest.jpg" alt="Interests">
+    </div>
+  </div>
+</section>
+
+<section class="bg8" id="personal">
+  <div class="section-content">
+    <div class="image-block scroll-animate">
+      <img src="my photo.jpeg" alt="Personal">
+    </div>
+    <div class="text-block scroll-animate">
+      <h2>Personal Details</h2>
+      <p><strong>Date of Birth:</strong> May 20, 2001</p>
+      <p><strong>Gender:</strong> Male</p>
+      <p><strong>Marital Status:</strong> Single</p>
+      <p><strong>Languages Known:</strong> English, Tamil</p>
+      <p><strong>Nationality:</strong> Indian</p>
+    </div>
+  </div>
+</section>
+
+<section class="bg9" id="declaration">
+  <div class="section-content">
+    <div class="text-block scroll-animate">
+      <h2>Declaration</h2>
+      <p>I hereby declare that the information given above is correct and true.</p>
+      <div class="signature">
+        <img src="signature.png" alt="Signature" />
+        <p><strong>Abishake A</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Scripts -->
+<script>
+  function toggleMenu() {
+    document.getElementById('navMenu').classList.toggle('open');
+  }
+
+  const skills = ["Java", "Power BI", "Tableau", "Advanced Excel", "Photoshop", "Communication", "Computer Knowledge"];
+  const container = document.getElementById("skills-container");
+  skills.forEach(skill => {
+    const tag = document.createElement("span");
+    tag.textContent = skill;
+    container.appendChild(tag);
+  });
+
+  // Scroll Animation
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.scroll-animate').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
